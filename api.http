@@ -1,0 +1,45 @@
+### 1) Add a Product
+POST http://127.0.0.1:8000/api/product/
+Content-Type: application/x-www-form-urlencoded
+
+product_id=prod_123
+name=SampleProduct
+stock=10
+minimum_stock=3
+
+###
+### 2) Get a Product by ID
+GET http://127.0.0.1:8000/api/product/prod_123
+
+###
+### 3) Update a Product
+PUT http://127.0.0.1:8000/api/product/prod_123
+Content-Type: application/x-www-form-urlencoded
+
+name=UpdatedSampleProduct
+stock=25
+minimum_stock=5
+
+###
+### 4) Change Product Stock (increase or decrease)
+PUT http://127.0.0.1:8000/api/product/stock/prod_123
+Content-Type: application/x-www-form-urlencoded
+
+amount=-5   # Decreases the stock by 5 (or positive to increase)
+
+###
+### 5) Get All Products
+GET http://127.0.0.1:8000/api/products/
+
+###
+### 6) Get Products with Low Stocks
+GET http://127.0.0.1:8000/api/product/low_stocks/
+
+###
+### 7) Predict Stock Depletion
+# daily_sale is passed as a query parameter
+GET http://127.0.0.1:8000/api/product/predict_stock_depletion/prod_123?daily_sale=3
+
+###
+### 8) Delete a Product
+DELETE http://127.0.0.1:8000/api/product/prod_123
